@@ -8,12 +8,12 @@
 main() {
 
 # ======================= ✏️  여기만 수정하세요 =======================
-TO_NAME="All Given"                           # 편지 맨 위  "To. ___"
-FROM_NAME="NIW"                          # 편지 맨 아래 "From. ___"
+TO_NAME="올기븐"                           # 편지 맨 위  "To. ___"
+FROM_NAME="나우아임원"                          # 편지 맨 아래 "From. ___"
 INTRO_TEXT="To. You"                    # 첫 화면 큰 글씨 (영문·숫자·기호만)
-ITEM1_NAME="DDR2 & DDR3 RAM Keyring"    # 첫 번째 선물 이름
-ITEM2_NAME="Snack"                      # 두 번째 선물 이름
-FINAL_TITLE="RECEIVE GIFT FROM SENDER"  # 마지막 화면 제목
+ITEM1_NAME="DDR3 2GB & DDR2 2GB 키링"    # 첫 번째 선물 이름
+ITEM2_NAME="편의점 간식 쿠폰"                      # 두 번째 선물 이름
+FINAL_TITLE="RECEIVE GIFT FROM SENDER WITH THIS CODE"  # 마지막 화면 제목
 GIFT_CODE="PTCS-RTC2-MVME-3MTP"         # 마지막 화면 16자리 코드
 
 # 편지 내용: 아래 두 줄(LETTER_END) 사이에 자유롭게 쓰면 돼요. 줄바꿈 그대로 나와요.
@@ -29,8 +29,11 @@ IFS= read -r -d '' LETTER_TEXT <<'LETTER_END'
 
 오늘 하루만큼은 너가 주인공이고, 행복한 시간 보냈으면 좋겟써.
 
-너의 남은 2026년도 잘 끝나기를 응원하고, 할망구랑도 100일 이어지기를 바랄게.
-다시 한번 생일 정말 축하해! 안농
+너의 남은 2026년도 잘 끝나기를 응원하고, 할망구랑도 100일.. 아니 영원히ㅣㅣ 이어지기를 바랄게. ;)
+다시 한번 생일 정말 축하해!
+
+안농~!
+
 LETTER_END
 # =====================================================================
 
@@ -999,7 +1002,7 @@ sub draw_ram {
   my $P = [-$hx + $hy * 0.4, $hy - $hy * 0.4, 0];
   my $sh = [0, -$hy * 0.25, 0];
   my @boxes;
-  for my $st ([0.09, -0.42, 'DDR3', '4GB 1600', -0.12], [-0.13, 0.42, 'DDR2', '2GB 800', 0.05]) {
+  for my $st ([0.09, -0.42, 'DDR3', '2GB PC3', -0.12], [-0.13, 0.42, 'DDR2', '2GB PC2', 0.05]) {
     my ($roll, $zo, $l1, $l2, $notch) = @$st;
     my $Rz = rz($roll);
     my $cl = mv($Rz, [-$P->[0], -$P->[1], 0]);
@@ -1156,7 +1159,7 @@ my $ok = eval {
 my $err = $@;
 restore();
 if (!$ok) { print STDERR "\n오류가 발생했어요: $err\n"; exit 1 }
-print "\n  \x{1F384}  Merry Christmas & Happy Birthday, $TO!  \x{1F382}\n\n";
+print "\n  \x{1F384}  $TO! 생일 축하해. 그리고 매우 이른(?) 메리 크리스마스~~ \x{1F382}\n\n";
 if ($ENV{GIFT_DEBUG} && $DBG_F) {
   open my $f, '>', '/tmp/gift_debug.txt';
   printf $f "frames=%d avg=%.2fms max=%.2fms size=%dx%d\n", $DBG_F, $DBG_T / $DBG_F * 1000, $DBG_MAX * 1000, $W, $H;
